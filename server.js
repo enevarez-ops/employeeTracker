@@ -15,8 +15,25 @@ const connection = mysql.createConnection({
   database: "employeeTracker_DB",
 });
 
+const runDepartments = () => {
+
+
+
+};
+
+const runEmployee = () => {
+
+
+};
+
+const runEmpRole = () => {
+
+
+};
+
+
 connection.connect((err) => {
   if (err) throw err;
-  runSearch();
+  ();
 });
 
