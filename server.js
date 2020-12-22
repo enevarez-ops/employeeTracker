@@ -34,6 +34,6 @@ const runEmpRole = () => {
 
 connection.connect((err) => {
   if (err) throw err;
-  ();
+  runDepartments();
 });
 
