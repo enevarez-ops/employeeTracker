@@ -3,61 +3,85 @@ const inquirer = require("inquirer");
 const db = require("./db");
 
 require("console.table");
-
-const employeeTracker = () => {
-  inquirer
-    .prompt([
-      {
-        type: "list",
-        name: "choice",
-        message: "What would you like to do?",
-        choices: [
-          {
-            name: "View all Employees?",
-            value: "allEmployees",
-          },
-          {
-            name: "View all Roles?",
-            value: "allRoles",
-          },
-          {
-            name: "View all Departments?",
-            value: "allDepartments",
-          },
-          {
-            name: "Add a Department?",
-            value: "addDepartment",
-          },
-          {
-            name: "Add a Role?",
-            value: "addRole",
-          },
-          {
-            name: "Add an Employee?",
-            value: "addEmployees",
-          },
-          {
-            name: "Update and Employee?",
-            value: "updateEmployee",
-          },
-        ],
-      },
-    ])
-    .then();
+async function employeeTracker() {
+  const {choice} = await inquirer.prompt([
+    {
+      type: "list",
+      name: "choice",
+      message: "What would you like to do?",
+      choices: [
+        {
+          name: "View all Employees?",
+          value: "allEmployees",
+        },
+        {
+          name: "View all Roles?",
+          value: "allRoles",
+        },
+        {
+          name: "View all Departments?",
+          value: "allDepartments",
+        },
+        {
+          name: "Add a Department?",
+          value: "addDepartment",
+        },
+        {
+          name: "Add a Role?",
+          value: "addRole",
+        },
+        {
+          name: "Add an Employee?",
+          value: "addEmployees",
+        },
+        {
+          name: "Update and Employee?",
+          value: "updateEmployee",
+        },
+        {
+          name: "Any more updates?",
+          value: "end",
+        }
+      ]
+    }
+  ]);
+  switch (choice) {
+    case "allEmployees":
+      return runEmployee();
+    case "allRoles":
+      return runEmpRole();
+    case "allDepartments":
+      return runDepartments();
+    case "addDepartment":
+      return addDepartment();
+    case "addRole":
+      return addRole();
+    case "addEmployees":
+      return addEmployee();
+    case "updateEmployee":
+      return updateEmployeeRole();  
+    default: 
+    return end();
+  }
+}
+const end = () => {
+  console.log("BYE!!!");
+  process.exit();
+};
+const runDepartments = () => {
+  console.log("here")
 };
 
-const runDepartments = () => {};
+const runEmployee = () => {console.log("here")};
 
-const runEmployee = () => {};
+const runEmpRole = () => {console.log("here")};
 
-const runEmpRole = () => {};
+const addDepartment = () => {console.log("here")};
 
-const addDepartment = () => {};
+const addEmployee = () => {console.log("here")};
 
-const addEmployee = () => {};
+const addRole = () => {console.log("here")};
 
-const addRole = () => {};
-
-const updateEmployeeRole = () => {};
+const updateEmployeeRole = () => {console.log("here")};
 
 employeeTracker();
