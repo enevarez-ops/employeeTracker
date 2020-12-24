@@ -16,10 +16,19 @@ class DB {
   findRoles() {
     return this.connection.query("SELECT * empRole");
   }
-  createEmployee() {}
-  createDepartment() {
-    return this.connection.query;
+  createEmployee(employee) {
+    return this.connection.query("INSERT INTO employee SET ?", employee);
   }
-  createRole() {}
-  updateEmployee() {}
+  createDepartment(department) {
+    return this.connection.query("INSERT INTO departments SET ?", department);
+  }
+  createRole(role) {
+    return this.connection.query("INSERT INTO empRole SET ?", role);
+  }
+  updateEmployee(roleId, empId) {
+    return this.connection.query(
+      "UPDATE employee SET role_id = ? WHERE id = ?",
+      [roleId, empId]
+    );
+  }
 }
