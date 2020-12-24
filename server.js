@@ -1,39 +1,23 @@
-const mysql = require("mysql");
 const inquirer = require("inquirer");
 
-const connection = mysql.createConnection({
-  host: "localhost",
+const db = require("./db");
 
-  // Your port; if not 3306
-  port: 8080,
+require("console.table");
 
-  // Your username
-  user: "root",
+const employeeTracker = () => {};
 
-  // Your password
-  password: "Sofia0602!",
-  database: "employeeTracker_DB",
-});
+const runDepartments = () => {};
 
-const runDepartments = () => {
+const runEmployee = () => {};
 
+const runEmpRole = () => {};
 
+const addDepartment = () => {};
 
-};
+const addEmployee = () => {};
 
-const runEmployee = () => {
+const addRole = () => {};
 
+const updateEmployeeRole = () => {};
 
-};
-
-const runEmpRole = () => {
-
-
-};
-
-
-connection.connect((err) => {
-  if (err) throw err;
-  runDepartments();
-});
-
+employeeTracker();

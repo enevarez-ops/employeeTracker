@@ -1,6 +1,6 @@
-
 const mysql = require("mysql");
 const util = require("util");
+require("dotenv").config();
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -9,14 +9,14 @@ const connection = mysql.createConnection({
   port: 8080,
 
   // Your username
-  user: "root",
+  user: process.env.DB_USER,
 
   // Your password
-  password: "Sofia0602!",
+  password: process.env.DB_PW,
   database: "employeeTracker_DB",
 });
 
-connection.connect()
+connection.connect();
 
 connection.query = util.promisify(connection.query);
 
