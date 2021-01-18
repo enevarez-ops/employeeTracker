@@ -3,8 +3,8 @@ const inquirer = require("inquirer");
 const db = require("./db");
 
 require("console.table");
-async function employeeTracker() {
-  const {choice} = await inquirer.prompt([
+ function employeeTracker() {
+  inquirer.prompt([
     {
       type: "list",
       name: "choice",
@@ -44,44 +44,45 @@ async function employeeTracker() {
         }
       ]
     }
-  ]);
-  switch (choice) {
-    case "allEmployees":
-      return runEmployee();
-    case "allRoles":
-      return runEmpRole();
-    case "allDepartments":
-      return runDepartments();
-    case "addDepartment":
-      return addDepartment();
-    case "addRole":
-      return addRole();
-    case "addEmployees":
-      return addEmployee();
-    case "updateEmployee":
-      return updateEmployeeRole();  
-    default: 
-    return end();
-  }
+  ]).then(function(answer){
+    switch (answer.choice) {
+      case "allEmployees":
+        return runEmployee();
+      case "allRoles":
+        return runEmpRole();
+      case "allDepartments":
+        return runDepartments();
+      case "addDepartment":
+        return addDepartment();
+      case "addRole":
+        return addRole();
+      case "addEmployees":
+        return addEmployee();
+      case "updateEmployee":
+        return updateEmployeeRole();  
+      default: 
+      return end();
+    }
+  });
 }
-const end = () => {
+function end() {
   console.log("BYE!!!");
   process.exit();
 };
-const runDepartments = () => {
+function runDepartments() {
   console.log("here")
 };
 
-const runEmployee = () => {console.log("here")};
+// const runEmployee = () => {console.log("here")};
 
-const runEmpRole = () => {console.log("here")};
+// const runEmpRole = () => {console.log("here")};
 
-const addDepartment = () => {console.log("here")};
+// const addDepartment = () => {console.log("here")};
 
-const addEmployee = () => {console.log("here")};
+// const addEmployee = () => {console.log("here")};
 
-const addRole = () => {console.log("here")};
+// const addRole = () => {console.log("here")};
 
-const updateEmployeeRole = () => {console.log("here")};
+// const updateEmployeeRole = () => {console.log("here")};
 
 employeeTracker();
