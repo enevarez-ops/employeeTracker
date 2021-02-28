@@ -44,8 +44,8 @@ require("console.table");
         }
       ]
     }
-  ]).then(function(answer){
-    switch (answer.choice) {
+  ]).then(({choice}){
+    switch (choice) {
       case "allEmployees":
         return runEmployee();
       case "allRoles":
