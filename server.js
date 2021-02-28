@@ -82,9 +82,22 @@ const runDepartments = () => {
     employeeTracker();
   })
 };
-// const runEmployee = () => {console.log("here")};
 
-// const runEmpRole = () => {console.log("here")};
+const runEmployee = () => {
+  connection.query("SELECT * FROM employee", (err, res) => {
+    if (err) throw err;
+    console.table(res)
+    employeeTracker()
+  })
+};
+
+const runEmpRole = () => {
+  connection.query("SELECT * FROM empRole", (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    employeeTracker();
+  })
+};
 
 // const addDepartment = () => {console.log("here")};
 
