@@ -167,6 +167,35 @@ const addRole = () => {
     }
   })
 
+  inquirer.prompt([
+    {
+      name: "title",
+      message: "what is the name of the role you would like to add?"
+    },
+    {
+      name: "salary",
+      message: "What is this role's salary?"
+    }, {
+      name: "dep",
+      message: "what department does this role belong to?",
+      type: "list",
+      choices: choice
+    }
+  ]).then(({ title, salary, dep }) => {
+    console.log(title, salary, dep)
+    connection.query("INSERT INTO empRole SET ?", {
+      title,
+      salary,
+      department_id: dep
+    }, (err, res) => {
+      if (err) throw err;
+      console.log(`${title} was added to your roles`)
+      employeeTracker();
+    })
+  })
+};
+
+
 // const updateEmployeeRole = () => {console.log("here")};
 
 employeeTracker();
