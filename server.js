@@ -154,7 +154,18 @@ const addEmployee = () => {
 
 };
 
-// const addRole = () => {console.log("here")};
+const addRole = () => {
+  const choice = []
+  connection.query("SELECT * FROM departments", (err, res) => {
+    if (err) throw err;
+    for (var i = 0; i < res.length; i++) {
+
+      choice.push({
+        name: res[i].name,
+        value: res[i].id
+      })
+    }
+  })
 
 // const updateEmployeeRole = () => {console.log("here")};
 
