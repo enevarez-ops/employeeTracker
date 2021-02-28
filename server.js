@@ -75,10 +75,13 @@ function end() {
   console.log("BYE!!!");
   process.exit();
 };
-function runDepartments() {
-  connecti
+const runDepartments = () => {
+  connection.query("SELECT * FROM departments", (err, res) => {
+    if (err) throw err;
+    console.table(res)
+    employeeTracker();
+  })
 };
-
 // const runEmployee = () => {console.log("here")};
 
 // const runEmpRole = () => {console.log("here")};
