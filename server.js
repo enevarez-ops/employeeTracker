@@ -99,7 +99,18 @@ const runEmpRole = () => {
   })
 };
 
-// const addDepartment = () => {console.log("here")};
+const addDepartment = () => {
+  inquirer.prompt({
+    name: "name",
+    message: "What department would you like to add?"
+  }).then(({ name }) => {
+    connection.query("INSERT INTO departments SET ?", { name: name }, (err, res) => {
+      if (err) throw err;
+      console.log(`${name} was added to departments`)
+      employeeTracker();
+    })
+  })
+};
 
 // const addEmployee = () => {console.log("here")};
 
