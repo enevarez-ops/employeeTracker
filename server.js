@@ -1,6 +1,12 @@
 const inquirer = require("inquirer");
+require('console.table')
+const db = require("./db/connection");
 
-const db = require("./db");
+connection.connect((err) => {
+  if (err) throw err;
+  employeeTracker()
+})
+
 
 require("console.table");
  function employeeTracker() {
@@ -70,7 +76,7 @@ function end() {
   process.exit();
 };
 function runDepartments() {
-  console.log("here")
+  connecti
 };
 
 // const runEmployee = () => {console.log("here")};
