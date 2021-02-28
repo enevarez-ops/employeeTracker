@@ -1,14 +1,14 @@
 const inquirer = require("inquirer");
 require('console.table')
-const db = require("./db/connection");
+const connection = require("./db/connection");
 
 connection.connect((err) => {
   if (err) throw err;
   employeeTracker()
-})
+});
 
 
-require("console.table");
+// require("console.table");
  function employeeTracker() {
   inquirer.prompt([
     {
@@ -50,7 +50,7 @@ require("console.table");
         }
       ]
     }
-  ]).then(({choice}){
+  ]).then(({choice}) => {
     switch (choice) {
       case "allEmployees":
         return runEmployee();
@@ -75,6 +75,7 @@ function end() {
   console.log("BYE!!!");
   process.exit();
 };
+
 const runDepartments = () => {
   connection.query("SELECT * FROM departments", (err, res) => {
     if (err) throw err;
@@ -195,7 +196,37 @@ const addRole = () => {
   })
 };
 
+const updateEmployeeRole = () => {
+  const roles = [];
+  const emps = [];
+  connection.query("SELECT employee.first_name, role.title FROM employee LEFT JOIN empRole ON employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;", (err, res) => {
+    if (err) throw err;
+    for (var i = 0; i < res.length; i++) {
+      emps.push({
+        name: res.first_name,
+      })
+      roles.push({
+        name: res[i].title,
+      })
+    }
+  })
 
-// const updateEmployeeRole = () => {console.log("here")};
+  inquirer.prompt([
+    {
+      name: "emp",
+      message: "Which employee's role would you like to update?",
+      type: "list",
+      choices: emps
+    },
+    {
+      name: "role",
+      message: "what is the updated role?",
+      type: 'list',
+      choices: roles
+    }
+  ]).then(answer => {
+    console.log(answer)
+  })
 
-employeeTracker();
+};
+

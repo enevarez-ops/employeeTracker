@@ -13,7 +13,7 @@ CREATE TABLE empRole(
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL, 
-    departmen_id INT,
+    department_id INT,
     PRIMARY KEY (id)
 );
 
