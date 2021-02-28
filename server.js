@@ -112,7 +112,47 @@ const addDepartment = () => {
   })
 };
 
-// const addEmployee = () => {console.log("here")};
+const addEmployee = () => {
+  const roles = []
+  connection.query("SELECT * FROM empRole", (err, res) => {
+    if (err) throw err;
+    for (var i = 0; i < res.length; i++) {
+      roles.push({
+        name: res[i].title,
+        value: res[i].id
+      })
+    }
+  })
+  inquirer.prompt([
+    {
+      name: "first_name",
+      message: "What is your employee's first name?"
+    },
+    {
+      name: "last_name",
+      message: "What is your employee's last name?"
+    },
+    {
+      name: "role",
+      message: "what role does this employee belong to?",
+      type: "list",
+      choices: roles
+    }
+  ]).then(({ first_name, last_name, role }) => {
+    // console.log(first_name, last_name, role)
+    connection.query("INSERT INTO employee SET ?", {
+      first_name,
+      last_name,
+      role_id: role
+    }, (err, res) => {
+      if (err) throw err;
+      console.log(`${first_name} was added to your roles`)
+      employeeTracker();
+    })
+  })
+
+
+};
 
 // const addRole = () => {console.log("here")};
 
