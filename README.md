@@ -20,10 +20,10 @@ I want to be able to view and manage the departments, roles, and employees in my
 So that I can organize and plan my business
  
 ## Description
-Description of Website and what technologies were used
+Javascript employee tracker system.
  
 ## Installation
-How to install and run app/website
+Install dependencies and run on node.
  
 ## Contributors
 Efrain Nevarez
