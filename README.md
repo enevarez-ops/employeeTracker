@@ -11,8 +11,8 @@
 * [License](##-License)
  
 ## Deployed site
-[Title of Site](Site-Link)
-![gif for site](gif-link)
+<!-- [Title of Site](Site-Link) -->
+![employeeTracker](employeeTracker.gif)
  
 ## User Story
 As a business owner
